@@ -53,15 +53,16 @@ nltk package will be automatically downloaded at your first run.
 
 ## Usage
 
-    from g2p_en import G2p
+    from g2p_en import G2p, G2px
     
     texts = ["I have $250 in my pocket.", # number -> spell-out
              "popular pets, e.g. cats and dogs", # e.g. -> for example
              "I refuse to collect the refuse around here.", # homograph
              "I'm an activationist."] # newly coined word
-    g2p = G2p()
+    # g2p = G2p()
+    g2px = G2px(has_bios=True)
     for text in texts:
-        out = g2p(text)
+        out = g2px(text)
         print(out)
     >>> ['AY1', ' ', 'HH', 'AE1', 'V', ' ', 'T', 'UW1', ' ', 'HH', 'AH1', 'N', 'D', 'R', 'AH0', 'D', ' ', 'F', 'IH1', 'F', 'T', 'IY0', ' ', 'D', 'AA1', 'L', 'ER0', 'Z', ' ', 'IH0', 'N', ' ', 'M', 'AY1', ' ', 'P', 'AA1', 'K', 'AH0', 'T', ' ', '.']
     >>> ['P', 'AA1', 'P', 'Y', 'AH0', 'L', 'ER0', ' ', 'P', 'EH1', 'T', 'S', ' ', ',', ' ', 'F', 'AO1', 'R', ' ', 'IH0', 'G', 'Z', 'AE1', 'M', 'P', 'AH0', 'L', ' ', 'K', 'AE1', 'T', 'S', ' ', 'AH0', 'N', 'D', ' ', 'D', 'AA1', 'G', 'Z']
