@@ -52,13 +52,14 @@ class G2px(G2p):
           pron = pron2
       elif word in self.cmu:  # lookup CMU dict
         pron = self.cmu[word][0]
-      else: # predict for oov
+      else:  # predict for oov
         pron = self.predict(word)
 
       if self.has_bios:
         if len(pron) == 1:
-          pron[0] = "S_"+pron[0] \
-            if pron[0] not in [',', '.', '!', '?'] else pron[0]
+          if not pron[0].startswith('S_'): # 修正cmudict 出现"S_"现象
+            pron[0] = "S_"+pron[0] \
+              if pron[0] not in [',', '.', '!', '?'] else pron[0]
         else:
           pron = [f'B_{x}' if i == 0 else f'I_{x}'
                   for i, x in enumerate(pron)]
