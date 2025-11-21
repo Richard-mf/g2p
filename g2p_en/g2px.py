@@ -19,9 +19,12 @@ from .expand import normalize_numbers
 
 
 class G2px(G2p):
-  def __init__(self, has_bios=False):
+  def __init__(self, has_bios=False, bios_type='bis'):
     super().__init__()
     self.has_bios = has_bios
+    # bies
+    assert bios_type in ['bis', 'bies'], "bios_type must be 'bis' or 'bies'"
+    self.bios_type = bios_type
 
   def __call__(self, text):
     # preprocessing
@@ -63,6 +66,9 @@ class G2px(G2p):
         else:
           pron = [f'B_{x}' if i == 0 else f'I_{x}'
                   for i, x in enumerate(pron)]
+          # bies
+          if self.bios_type == 'bies':
+            pron[-1] = pron[-1].replace('I_', 'E_')
 
       prons.extend(pron)
       prons.extend([" "])

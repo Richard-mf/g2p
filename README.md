@@ -60,7 +60,7 @@ nltk package will be automatically downloaded at your first run.
              "I refuse to collect the refuse around here.", # homograph
              "I'm an activationist."] # newly coined word
     # g2p = G2p()
-    g2px = G2px(has_bios=True)
+    g2px = G2px(has_bios=True) # default bios_type='bis'
     for text in texts:
         out = g2px(text)
         print(out)
