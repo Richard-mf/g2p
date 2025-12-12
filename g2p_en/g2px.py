@@ -39,6 +39,8 @@ class G2px(G2p):
 
     # tokenization
     words = word_tokenize(text)
+    ## fix "examples'"-> "examples '" 类的分词问题
+    words = [w for w in words if w not in ["'", "''"]]
     tokens = pos_tag(words)  # tuples of (word, tag)
 
     # steps

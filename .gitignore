@@ -6,3 +6,4 @@ dist
 build
 .idea/
 .idea/workspace.xml
+g2p_en.egg-info
